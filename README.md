@@ -16,9 +16,8 @@ below depicts the end result.
 
 ![Project Goal](project_goal_visualization.png)
 
-Apache Spark is employed to parallelize the spational interpolation, Web
-Mercator projection, and color map overlay generation steps of the ETL
-pipeline.
+Apache Spark is employed to parallelize the task of joining temperature data with
+weather station locations and computing per-year averages.
 
 ## Data
 
@@ -26,3 +25,8 @@ Due to size, the data is not included directly in this repo, but it can be
 downloaded from [here](http://alaska.epfl.ch/files/scala-capstone-data.zip).
 
 Once downloaded, extract the `resources` folder directly to `src/main`.
+
+## Execution
+
+Kick off a run with `sbt run`. You may need to set the `-mem` option to a high
+value (e.g. 4096) depending on your settings.
