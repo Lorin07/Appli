@@ -40,3 +40,6 @@ case class CellPoint(x: Double, y: Double)
   */
 case class Color(red: Int, green: Int, blue: Int)
 
+object Location {
+  val invalid = new Location(Double.NaN, Double.NaN)
+}
