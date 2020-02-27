@@ -20,3 +20,7 @@ Apache Spark is employed to parallelize the spational interpolation, Web
 Mercator projection, and color map overlay generation steps of the ETL
 pipeline.
 
+## Data
+
+Due to size, the data is not included directly in this repo, but it can be
+downloaded from [here](http://alaska.epfl.ch/files/scala-capstone-data.zip).
