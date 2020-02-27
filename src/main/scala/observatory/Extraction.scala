@@ -12,7 +12,11 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object Extraction {
 
-  @transient lazy val conf: SparkConf =  new SparkConf().setMaster("local[*]").setAppName("Extraction")
+  @transient lazy val conf: SparkConf =  new SparkConf()
+    .setMaster("local[*]")
+    .setAppName("Extraction")
+    .set("spark.network.timeout", "10000001")
+    .set("spark.executor.heartbeatInterval", "10000000")
   @transient lazy val sc: SparkContext = new SparkContext(conf)
 
   /**

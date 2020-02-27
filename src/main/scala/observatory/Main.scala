@@ -3,6 +3,8 @@ package observatory
 import java.io.File
 
 import org.apache.log4j.{Level, Logger}
+import scala.collection.parallel.ForkJoinTaskSupport
+import scala.concurrent.forkjoin.ForkJoinPool
 
 object Main extends App {
   val colors: List[(Double, Color)] = List(
@@ -20,8 +22,12 @@ object Main extends App {
 
   val normalsRange = 1975 to 1989
   val deviationsRange = 1990 to 2015
+  
+  val averageTemperaturesByYearTaskSupport = new ForkJoinTaskSupport(new ForkJoinPool(8))
+  val yearsPar = (normalsRange.start to deviationsRange.end).par
+  yearsPar.tasksupport = averageTemperaturesByYearTaskSupport
 
-  val averageTemperaturesByYear = (normalsRange.start to deviationsRange.end).par.map(
+  val averageTemperaturesByYear = yearsPar.par.map(
     (year) => {
       val temperatures = Extraction.locateTemperatures(year, "/stations.csv", s"/$year.csv")
       val averagedTemperatures = Extraction.locationYearlyAverageRecords(temperatures)
