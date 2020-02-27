@@ -24,3 +24,5 @@ pipeline.
 
 Due to size, the data is not included directly in this repo, but it can be
 downloaded from [here](http://alaska.epfl.ch/files/scala-capstone-data.zip).
+
+Once downloaded, extract the `resources` folder directly to `src/main`.
